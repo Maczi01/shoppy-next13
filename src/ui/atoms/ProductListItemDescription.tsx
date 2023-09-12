@@ -1,9 +1,7 @@
+import type { ProductItemType } from "@/ui/types";
+
 type ProductListItemDescriptionProps = {
-	product: {
-		name: string;
-		category: string;
-		price: number;
-	};
+	product: ProductItemType;
 };
 
 export const ProductListItemDescription = ({
