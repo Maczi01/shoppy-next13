@@ -1,18 +1,23 @@
 import { ProductCoverImage } from "@/ui/atoms/ProductCoverImage";
 import { ProductListItemDescription } from "@/ui/atoms/ProductListItemDescription";
 
-export const ProductListItem = ({}) => {
+type ProductListItemProps = {
+	product: {
+		name: string;
+		category: string;
+		price: number;
+		coverImage: {
+			src: string;
+			alt: string;
+		};
+	};
+};
+export const ProductListItem = ({ product }: ProductListItemProps) => {
 	return (
 		<li>
 			<article>
-				<ProductCoverImage src="/product_1.png" alt="kubek" />
-				<ProductListItemDescription
-					product={{
-						name: "Kubek",
-						price: 220,
-						category: "kategoria",
-					}}
-				/>
+				<ProductCoverImage src={product.coverImage.src} alt={product.coverImage.alt} />
+				<ProductListItemDescription product={product} />
 			</article>
 		</li>
 	);
