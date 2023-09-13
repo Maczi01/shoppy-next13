@@ -7,7 +7,7 @@ type ProductListItemProps = {
 };
 export const ProductListItem = ({ product }: ProductListItemProps) => {
 	return (
-		<li>
+		<li className="border-amber-50">
 			<article>
 				<ProductCoverImage src={product.coverImage.src} alt={product.coverImage.alt} />
 				<ProductListItemDescription product={product} />
