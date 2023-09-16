@@ -13,7 +13,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<html lang="pl">
 			<body className={inter.className}>
-				<section className="flex min-h-screen items-center justify-center bg-black px-4 text-white">
+				<section className="flex items-center justify-center bg-black px-4 text-white">
+					{/*flex min-h-screen items-center justify-center bg-black px-4 text-white">*/}
 					{children}
 				</section>
 				<footer>
