@@ -16,6 +16,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 				<section className="flex min-h-screen items-center justify-center bg-black px-4 text-white">
 					{children}
 				</section>
+				<footer>
+					<p className="text-center text-sm text-amber-200">2023 &copy; Next Shop</p>
+				</footer>
 			</body>
 		</html>
 	);
