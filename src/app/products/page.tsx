@@ -2,9 +2,5 @@ import { ProductList } from "@/ui/organisms/ProductList";
 import { products } from "@/fixtures";
 
 export default function Products() {
-	return (
-		<section className="flex min-h-screen items-center justify-center bg-black px-4 text-white">
-			<ProductList products={products} />
-		</section>
-	);
+	return <ProductList products={products} />;
 }
