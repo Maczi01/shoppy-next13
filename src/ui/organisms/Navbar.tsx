@@ -1,3 +1,5 @@
+import { ActiveLink } from "@/ui/atoms/ActiveLink";
+
 export const Navbar = () => {
 	const links = [
 		{
@@ -5,7 +7,7 @@ export const Navbar = () => {
 			href: "/",
 		},
 		{
-			name: "Products",
+			name: "All",
 			href: "/products",
 		},
 	];
@@ -17,14 +19,10 @@ export const Navbar = () => {
 			</div>
 			<div className="block w-full flex-grow lg:flex lg:w-auto lg:items-center">
 				<div className="text-sm lg:flex-grow">
-					{links.map((link) => (
-						<a
-							key={link.name}
-							href={link.href}
-							className="mr-4 mt-4 block text-amber-200 hover:text-white lg:mt-0 lg:inline-block"
-						>
-							{link.name}
-						</a>
+					{links.map(({ name, href }) => (
+						<ActiveLink key={name} href={href}>
+							{name}
+						</ActiveLink>
 					))}
 				</div>
 				<div>
