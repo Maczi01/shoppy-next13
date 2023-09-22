@@ -1,7 +1,8 @@
+import type { Route } from "next";
 import { ActiveLink } from "@/ui/atoms/ActiveLink";
 
 export const Navbar = () => {
-	const links = [
+	const links: { name: string; href: Route }[] = [
 		{
 			name: "Home",
 			href: "/",
@@ -19,9 +20,9 @@ export const Navbar = () => {
 			</div>
 			<div className="block w-full flex-grow lg:flex lg:w-auto lg:items-center">
 				<div className="text-sm lg:flex-grow">
-					{links.map(({ name, href }) => (
-						<ActiveLink key={name} href={href}>
-							{name}
+					{links.map((link) => (
+						<ActiveLink key={link.name} href={link.href}>
+							{link.name}
 						</ActiveLink>
 					))}
 				</div>

@@ -2,6 +2,7 @@
 const nextConfig = {
 	experimental: {
 		mdxRs: true,
+		typedRoutes: true,
 	},
 };
 const withMDX = require("@next/mdx")();
