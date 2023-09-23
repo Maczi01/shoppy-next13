@@ -21,7 +21,7 @@ export const Navbar = () => {
 			<div className="block w-full flex-grow lg:flex lg:w-auto lg:items-center">
 				<div className="text-sm lg:flex-grow">
 					{links.map((link) => (
-						<ActiveLink key={link.name} href={link.href}>
+						<ActiveLink exact={true} key={link.name} href={link.href}>
 							{link.name}
 						</ActiveLink>
 					))}
