@@ -1,3 +1,4 @@
+import { URL } from "@/fixtures";
 import type { ProductItemType } from "@/ui/types";
 
 type ProductResponseItem = {
@@ -16,9 +17,8 @@ type Rating = {
 	count: number;
 };
 
-const URL = "https://naszsklep-api.vercel.app/api/products";
 export const getProductsList = async (): Promise<ProductItemType[]> => {
-	const res = await fetch("https://naszsklep-api.vercel.app/api/products");
+	const res = await fetch(URL);
 	const productsResponse = (await res.json()) as ProductResponseItem;
 	return productsResponse.map(mapProductResponseItemToProductItemType).slice(0, 20);
 };

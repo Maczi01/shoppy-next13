@@ -1,3 +1,4 @@
+export const URL = "https://naszsklep-api.vercel.app/api/products";
 export const products = [
 	{
 		id: "1",
