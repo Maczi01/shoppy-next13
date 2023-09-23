@@ -31,7 +31,7 @@ export const Navbar = () => {
 						href="/"
 						className="mt-4 inline-block rounded border border-white px-4 py-2 text-sm leading-none text-white hover:border-transparent hover:bg-white hover:text-amber-500 lg:mt-0"
 					>
-						Temporary button
+						Basket
 					</a>
 				</div>
 			</div>
