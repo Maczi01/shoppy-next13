@@ -14,19 +14,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<html lang="pl">
 			<body className={inter.className}>
-				{/*<nav>*/}
-				{/*	<ul className="mt-2 flex justify-center space-x-4">*/}
-				{/*		<li>*/}
-				{/*			<ActiveLink href="/">Homepage</ActiveLink>*/}
-				{/*		</li>*/}
-				{/*		<li>*/}
-				{/*			<ActiveLink href="/products">Products</ActiveLink>*/}
-				{/*		</li>*/}
-				{/*	</ul>*/}
-				{/*</nav>*/}
 				<Navbar />
 				<section className="flex items-center justify-center bg-black px-4 text-white">
-					{/*flex min-h-screen items-center justify-center bg-black px-4 text-white">*/}
 					{children}
 				</section>
 				<footer>
