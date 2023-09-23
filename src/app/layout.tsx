@@ -19,7 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 					{children}
 				</section>
 				<footer>
-					<p className="text-center text-sm text-amber-200">2023 &copy; Next Shop</p>
+					<p className="bg-black py-2 text-center text-sm text-amber-200">2023 &copy; Next Shop</p>
 				</footer>
 			</body>
 		</html>

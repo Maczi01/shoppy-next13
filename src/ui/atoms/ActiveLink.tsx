@@ -18,8 +18,18 @@ export const ActiveLink = <T extends string>({
 	exact?: boolean;
 }) => {
 	const pathname = usePathname();
+	console.log({ pathname });
 	const isActive = pathname === href;
+	console.log({ href });
 	const styles = isActive ? activeClassName : className;
+
+	// const matchedPath = (typeof href === "string" ? href : href.pathname) ?? null;
+	// const isActive =
+	// 	(matchedPath &&
+	// 		pathname &&
+	// 		(exact ? pathname === matchedPath : pathname.startsWith(matchedPath))) ||
+	// 	false;
+
 	return (
 		<Link href={href} className={styles}>
 			{children}

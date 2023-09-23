@@ -3,13 +3,13 @@ import { getProductById } from "@/api/products";
 import { SuggestedProductsList } from "@/ui/organisms/SuggestedProductsList";
 import { SingleProduct } from "@/ui/organisms/SingleProduct";
 import { Metadata } from "next";
-
+import { URL } from "@/fixtures";
 export async function generateMetadata({
 	params,
 }: {
 	params: { productId: string };
 }): Promise<Metadata> {
-	const res = await fetch("https://naszsklep-api.vercel.app/api/products/" + params.productId);
+	const res = await fetch(`${URL}/${params.productId}`);
 	const product = (await res.json()) as { title: string; description: string };
 
 	return {
