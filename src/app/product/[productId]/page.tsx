@@ -1,8 +1,8 @@
 import React, { Suspense } from "react";
+import type { Metadata } from "next";
 import { getProductById, getProductsList } from "@/api/products";
 import { SuggestedProductsList } from "@/ui/organisms/SuggestedProductsList";
 import { SingleProduct } from "@/ui/organisms/SingleProduct";
-import { Metadata } from "next";
 import { URL } from "@/fixtures";
 export async function generateMetadata({
 	params,
