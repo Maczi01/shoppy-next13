@@ -1,12 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	experimental: {
-		mdxRs: true,
-		typedRoutes: true,
+	experimental: { typedRoutes: true, serverActions: true },
+	images: {
+		domains: ["media.graphassets.com"],
 	},
-};
-module.exports = {
-	async redirects() {
+	redirects: async () => {
 		return [
 			{
 				source: "/products",
@@ -16,5 +14,5 @@ module.exports = {
 		];
 	},
 };
-const withMDX = require("@next/mdx")();
-module.exports = withMDX(nextConfig);
+
+module.exports = nextConfig;

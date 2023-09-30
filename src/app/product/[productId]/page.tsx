@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { getProductById } from "@/api/products";
+import { getProductById, getProductsList } from "@/api/products";
 import { SuggestedProductsList } from "@/ui/organisms/SuggestedProductsList";
 import { SingleProduct } from "@/ui/organisms/SingleProduct";
 import { Metadata } from "next";
@@ -17,6 +17,15 @@ export async function generateMetadata({
 		description: product.description,
 	};
 }
+
+export const generateStaticParams = async () => {
+	const products = await getProductsList();
+	return products
+		.map((product) => ({
+			productId: product.id,
+		}))
+		.slice(0, 5);
+};
 
 export default async function SingleProductPage({ params }: { params: { productId: string } }) {
 	const product = await getProductById(params.productId);
