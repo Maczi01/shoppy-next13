@@ -9,7 +9,7 @@
 		"start": "next start",
 		"lint": "next lint --fix --dir src",
 		"format": "prettier --write .",
-		"codegen": "graphql-codegen --config codegen.ts"
+		"codegen": "graphql-codegen --config .graphqlrc.ts"
 	},
 	"dependencies": {
 		"@mdx-js/loader": "2.3.0",
