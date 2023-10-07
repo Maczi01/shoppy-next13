@@ -39,7 +39,21 @@ export const getProductsList = async (offset: number = 1): Promise<ProductItemTy
 };
 
 export const getProductById = async (id: ProductResponseItem["id"]): Promise<ProductItemType> => {
-	const res = await fetch(`${URL}/${id}`);
+	const res = await fetch(`${URL}/${id}`, {
+		method: "POST",
+		body: JSON.stringify({
+			query: `query GetProductsList{
+				products(first: 10) {
+					id
+					name
+					price
+					description
+					images {
+					url
+					}
+				}`,
+		}),
+	});
 	const productResponse = (await res.json()) as ProductResponseItem;
 	return mapProductResponseItemToProductItemType(productResponse);
 };

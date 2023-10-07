@@ -1,4 +1,6 @@
-export const URL = "https://naszsklep-api.vercel.app/api/products";
+// export const URL = "https://naszsklep-api.vercel.app/api/products";
+export const URL =
+	"https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/clihaom3j03ep01te1dg24yp5/master";
 export const products = [
 	{
 		id: "1",
