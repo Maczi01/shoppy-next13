@@ -1,9 +1,13 @@
 import React, { Suspense } from "react";
 import type { Metadata } from "next";
-import { getProductById, getProductsList } from "@/api/products";
+import { notFound } from "next/navigation";
+import { getProductsList } from "@/api/products";
 import { SuggestedProductsList } from "@/ui/organisms/SuggestedProductsList";
 import { SingleProduct } from "@/ui/organisms/SingleProduct";
 import { URL } from "@/fixtures";
+import { ProductGetByIdDocument } from "@/gql/graphql";
+import { executeGraphql } from "@/graphql/utils";
+
 export async function generateMetadata({
 	params,
 }: {
@@ -28,7 +32,18 @@ export const generateStaticParams = async () => {
 };
 
 export default async function SingleProductPage({ params }: { params: { productId: string } }) {
-	const product = await getProductById(params.productId);
+	// const product = await getProductById(params.productId);
+	await executeGraphql(ProductGetByIdDocument, {
+		id: params.productId,
+	});
+
+	const { product } = await executeGraphql(ProductGetByIdDocument, {
+		id: params.productId,
+	});
+
+	if (!product) {
+		notFound();
+	}
 	return (
 		<div className="flex min-h-screen flex-col items-center justify-center bg-black text-amber-200">
 			<SingleProduct product={product} />
