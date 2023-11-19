@@ -1,6 +1,6 @@
 import type { ProductItemType } from "@/ui/types";
-import { ProductCoverImage } from "@/ui/atoms/ProductCoverImage";
-import { ProductListItemDescription } from "@/ui/atoms/ProductListItemDescription";
+import { ProductCoverImage } from "@/ui/components/ProductCoverImage";
+import { ProductListItemDescription } from "@/ui/components/ProductListItemDescription";
 
 export const SingleProduct = ({ product }: { product: ProductItemType }) => {
 	return (

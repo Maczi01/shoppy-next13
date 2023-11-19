@@ -1,4 +1,4 @@
-import { ActiveLink } from "@/ui/atoms/ActiveLink";
+import { ActiveLink } from "@/ui/components/ActiveLink";
 
 export const Navbar = () => {
 	return (

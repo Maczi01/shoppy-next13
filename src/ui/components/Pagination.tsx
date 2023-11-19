@@ -1,4 +1,4 @@
-import { ActiveLink } from "@/ui/atoms/ActiveLink";
+import { ActiveLink } from "@/ui/components/ActiveLink";
 
 export const Pagination = () => {
 	const pages = [1, 2, 3, 4, 5];

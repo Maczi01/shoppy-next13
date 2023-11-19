@@ -1,5 +1,5 @@
 import { ProductList } from "@/ui/organisms/ProductList";
-import { Pagination } from "@/ui/molecules/Pagination";
+import { Pagination } from "@/ui/components/Pagination";
 import { ProductsGetListDocument } from "@/gql/graphql";
 import { executeGraphql } from "@/graphql/utils";
 
