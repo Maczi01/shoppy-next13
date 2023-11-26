@@ -2,8 +2,7 @@ import React, { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { SuggestedProductsList } from "@/ui/organisms/SuggestedProductsList";
 import { SingleProduct } from "@/ui/organisms/SingleProduct";
-import { ProductGetByIdDocument } from "@/gql/graphql";
-import { executeGraphQLQuery } from "@/api/graphqlApi";
+import { getProductById } from "@/api/getProductsList";
 
 // export async function generateMetadata({
 // 	params,
@@ -29,30 +28,28 @@ import { executeGraphQLQuery } from "@/api/graphqlApi";
 // };
 
 export default async function SingleProductPage({ params }: { params: { productId: string } }) {
-	const { product } = await executeGraphQLQuery(ProductGetByIdDocument, {
-		id: params.productId,
-	});
+	const product = await getProductById(params.productId);
 	if (!product) {
 		notFound();
 	}
 
-	const productMapped = {
-		id: product.id || "",
-		name: product.name,
-		category: product?.categories[0]?.name || "",
-		price: product.price,
-		coverImage: {
-			src: product.images[0]?.url || "",
-			alt: product.name,
-		},
-	};
+	// const productMapped = {
+	// 	id: product.id || "",
+	// 	name: product.name,
+	// 	category: product?.categories[0]?.name || "",
+	// 	price: product.price,
+	// 	coverImage: {
+	// 		src: product.images[0]?.url || "",
+	// 		alt: product.name,
+	// 	},
+	// };
 
 	return (
 		<div
 			className="flex min-h-screen
 		 flex-col items-center justify-center bg-black text-amber-200"
 		>
-			<SingleProduct product={productMapped} />
+			<SingleProduct {...product} />
 			<aside>
 				<Suspense>
 					<SuggestedProductsList />

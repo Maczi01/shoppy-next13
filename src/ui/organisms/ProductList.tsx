@@ -1,7 +1,7 @@
 import { ProductListItem } from "@/ui/components/ProductListItem";
-import { type ProductItemType } from "@/ui/types";
+import { type ProductListItemFragmentFragment } from "@/gql/graphql";
 
-export const ProductList = ({ products }: { products: ProductItemType[] }) => {
+export const ProductList = ({ products }: { products: ProductListItemFragmentFragment[] }) => {
 	return (
 		<div className="flex flex-col items-center justify-center bg-black text-amber-200">
 			<ul
@@ -9,7 +9,7 @@ export const ProductList = ({ products }: { products: ProductItemType[] }) => {
 				data-testid="products-list"
 			>
 				{products.map((product) => {
-					return <ProductListItem key={product.id} product={product} />;
+					return <ProductListItem key={product.id} {...product} />;
 				})}
 			</ul>
 		</div>
