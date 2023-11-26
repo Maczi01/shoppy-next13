@@ -3,6 +3,7 @@ import { ProductCoverImage } from "@/ui/components/ProductCoverImage";
 import { ProductListItemDescription } from "@/ui/components/ProductListItemDescription";
 
 export const SingleProduct = ({ product }: { product: ProductItemType }) => {
+	// console.log("product", product);
 	return (
 		<>
 			<article className="flex min-h-screen flex-col items-center justify-center bg-black text-amber-200">
