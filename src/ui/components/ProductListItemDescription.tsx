@@ -10,7 +10,6 @@ export const ProductListItemDescription = ({
 	price,
 	categories,
 }: ProductListItemDescriptionProps) => {
-	!!categories?.length && console.log("ProductListItemDescription", categories[0]?.name);
 	return (
 		<div className="mt-2 flex justify-between">
 			<div>

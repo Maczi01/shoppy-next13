@@ -8,7 +8,6 @@ export const SingleProduct = ({
 	categories,
 	images,
 }: ProductListItemFragmentFragment) => {
-	console.log("SingleProduct", name, price, categories, images);
 	return (
 		<>
 			<article className="flex min-h-screen flex-col items-center justify-center bg-black text-amber-200">

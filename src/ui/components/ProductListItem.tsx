@@ -4,7 +4,6 @@ import { ProductListItemDescription } from "@/ui/components/ProductListItemDescr
 import { type ProductListItemFragmentFragment } from "@/gql/graphql";
 
 export const ProductListItem = (props: ProductListItemFragmentFragment) => {
-	console.log("ProductListItem", props);
 	const { images, id, name, categories, price } = props;
 	return (
 		<li className="border-amber-50">
