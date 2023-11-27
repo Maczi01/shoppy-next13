@@ -11,6 +11,7 @@ export const Navbar = () => {
 					<ActiveLink href={"/products"}>All</ActiveLink>
 					<ActiveLink href={"/categories/hoodies"}>Hoodies</ActiveLink>
 					<ActiveLink href={"/categories/t-shirts"}>T-shirts</ActiveLink>
+					<ActiveLink href={"/collections"}>Collections</ActiveLink>
 				</div>
 				<div>
 					<ActiveLink href="/">Basket</ActiveLink>

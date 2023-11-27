@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { SuggestedProductsList } from "@/ui/organisms/SuggestedProductsList";
 import { SingleProduct } from "@/ui/organisms/SingleProduct";
-import { getProductById } from "@/api/getProductsList";
+import { getProductById, getSuggestedProducts } from "@/api/getProductsList";
 
 // export async function generateMetadata({
 // 	params,
@@ -29,21 +29,12 @@ import { getProductById } from "@/api/getProductsList";
 
 export default async function SingleProductPage({ params }: { params: { productId: string } }) {
 	const product = await getProductById(params.productId);
+
 	if (!product) {
 		notFound();
 	}
-
-	// const productMapped = {
-	// 	id: product.id || "",
-	// 	name: product.name,
-	// 	category: product?.categories[0]?.name || "",
-	// 	price: product.price,
-	// 	coverImage: {
-	// 		src: product.images[0]?.url || "",
-	// 		alt: product.name,
-	// 	},
-	// };
-
+	const slug = product?.categories[0]?.slug;
+	const suggestedProducts = await getSuggestedProducts({ slug });
 	return (
 		<div
 			className="flex min-h-screen
@@ -52,7 +43,7 @@ export default async function SingleProductPage({ params }: { params: { productI
 			<SingleProduct {...product} />
 			<aside>
 				<Suspense>
-					<SuggestedProductsList />
+					<SuggestedProductsList products={suggestedProducts} />
 				</Suspense>
 			</aside>
 		</div>

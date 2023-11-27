@@ -1,18 +1,12 @@
 import { executeGraphQLQuery } from "@/api/graphqlApi";
 import {
 	GetProductsListDocument,
+	GetSuggestedProductsListDocument,
 	ProductGetByIdDocument,
 	type ProductListItemFragmentFragment,
 } from "@/gql/graphql";
 
 export const getProductsList = async (): Promise<ProductListItemFragmentFragment[]> => {
-	// 	...product,
-	// 	category: product.categories[0]?.name || "",
-	// 	coverImage: {
-	// 		src: product?.images[0]?.url || "",
-	// 		alt: product.name,
-	// 	},
-	// }));
 	const { products } = await executeGraphQLQuery(GetProductsListDocument, {});
 	return products;
 };
@@ -24,6 +18,14 @@ export const getProductById = async (
 		id,
 	});
 	return product;
+};
+
+export const getSuggestedProducts = async ({ slug }: { slug: string }) => {
+	const { products } = await executeGraphQLQuery(GetSuggestedProductsListDocument, {
+		slug,
+	});
+
+	return products;
 };
 
 // export const getProductsListByCategorySlug = async (

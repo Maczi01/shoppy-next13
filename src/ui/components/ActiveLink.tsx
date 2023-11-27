@@ -21,9 +21,12 @@ export const ActiveLink = <T extends string>({
 }: ActiveLinkProps<T>) => {
 	const currentPath = usePathname();
 	const path = typeof href === "string" ? href : href.pathname || "";
-
-	const isActive = exact ? currentPath === path : currentPath.startsWith(`${path}/`);
-
+	console.log("currentPath", currentPath);
+	console.log("path", path);
+	const isActive = exact
+		? currentPath === path
+		: currentPath.startsWith(`${path}/`) || currentPath === path;
+	//
 	return (
 		<Link href={href} className={isActive ? className : activeClassName} aria-current>
 			{children}

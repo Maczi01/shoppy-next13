@@ -10795,17 +10795,36 @@ export enum _SystemDateTimeFieldVariation {
   Localization = 'localization'
 }
 
+export type CollectionsGetCollectionBySlugQueryVariables = Exact<{
+  slug: Scalars['String']['input'];
+}>;
+
+
+export type CollectionsGetCollectionBySlugQuery = { collections: Array<{ name: string, products: Array<{ id: string, name: string, slug: string, description: string, price: number, images: Array<{ url: string }>, categories: Array<{ name: string }> }> }> };
+
+export type CollectionsGetListQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type CollectionsGetListQuery = { collections: Array<{ id: string, name: string, slug: string, products: Array<{ images: Array<{ url: string }> }> }> };
+
 export type GetProductsListQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetProductsListQuery = { products: Array<{ id: string, name: string, description: string, price: number, categories: Array<{ name: string }>, images: Array<{ url: string }> }> };
+
+export type GetSuggestedProductsListQueryVariables = Exact<{
+  slug: Scalars['String']['input'];
+}>;
+
+
+export type GetSuggestedProductsListQuery = { products: Array<{ id: string, name: string, description: string, slug: string, price: number, categories: Array<{ name: string }>, images: Array<{ url: string }> }> };
 
 export type ProductGetByIdQueryVariables = Exact<{
   id: Scalars['ID']['input'];
 }>;
 
 
-export type ProductGetByIdQuery = { product?: { id: string, name: string, description: string, price: number, categories: Array<{ name: string }>, images: Array<{ url: string }> } | null };
+export type ProductGetByIdQuery = { product?: { id: string, name: string, description: string, price: number, categories: Array<{ slug: string, name: string }>, images: Array<{ url: string }> } | null };
 
 export type ProductListItemFragmentFragment = { id: string, name: string, description: string, price: number, categories: Array<{ name: string }>, images: Array<{ url: string }> };
 
@@ -10844,6 +10863,40 @@ export const ProductListItemFragmentFragmentDoc = new TypedDocumentString(`
   price
 }
     `, {"fragmentName":"ProductListItemFragment"}) as unknown as TypedDocumentString<ProductListItemFragmentFragment, unknown>;
+export const CollectionsGetCollectionBySlugDocument = new TypedDocumentString(`
+    query CollectionsGetCollectionBySlug($slug: String!) {
+  collections(where: {slug: $slug}) {
+    name
+    products {
+      id
+      name
+      slug
+      description
+      price
+      images {
+        url
+      }
+      categories {
+        name
+      }
+    }
+  }
+}
+    `) as unknown as TypedDocumentString<CollectionsGetCollectionBySlugQuery, CollectionsGetCollectionBySlugQueryVariables>;
+export const CollectionsGetListDocument = new TypedDocumentString(`
+    query CollectionsGetList {
+  collections {
+    id
+    name
+    slug
+    products {
+      images(first: 1) {
+        url
+      }
+    }
+  }
+}
+    `) as unknown as TypedDocumentString<CollectionsGetListQuery, CollectionsGetListQueryVariables>;
 export const GetProductsListDocument = new TypedDocumentString(`
     query GetProductsList {
   products {
@@ -10860,6 +10913,23 @@ export const GetProductsListDocument = new TypedDocumentString(`
   }
 }
     `) as unknown as TypedDocumentString<GetProductsListQuery, GetProductsListQueryVariables>;
+export const GetSuggestedProductsListDocument = new TypedDocumentString(`
+    query GetSuggestedProductsList($slug: String!) {
+  products(first: 4, where: {categories_some: {slug: $slug}}) {
+    id
+    name
+    description
+    slug
+    categories(first: 1) {
+      name
+    }
+    images(first: 1) {
+      url
+    }
+    price
+  }
+}
+    `) as unknown as TypedDocumentString<GetSuggestedProductsListQuery, GetSuggestedProductsListQueryVariables>;
 export const ProductGetByIdDocument = new TypedDocumentString(`
     query ProductGetById($id: ID!) {
   product(where: {id: $id}) {
@@ -10867,6 +10937,7 @@ export const ProductGetByIdDocument = new TypedDocumentString(`
     name
     description
     categories(first: 1) {
+      slug
       name
     }
     images(first: 1) {
