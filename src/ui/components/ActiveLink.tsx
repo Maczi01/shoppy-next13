@@ -22,17 +22,25 @@ export const ActiveLink = <T extends string>({
 	activeClassName = "mx-2 border border-blue-800 text-blue-800 bg-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800",
 }: ActiveLinkProps<T>) => {
 	const pathname = usePathname();
-	const linkPathname = new URL(href, window.location.origin).pathname; // Extract pathname from href
 
 	const isActive = exact
-		? pathname === linkPathname
-		: pathname.startsWith(linkPathname) && pathname.length === linkPathname.length;
+		? pathname === href
+		: pathname.startsWith(href) && pathname.length === href.length;
 
-	console.log("isActive", isActive);
-	console.log("pathname", pathname);
-	// console.log("href", href);
-	console.log("linkPathname", linkPathname);
+	console.log(pathname, href, isActive);
 
+	// return (
+	// 	<Link
+	// 		href={href}
+	// 		prefetch={true}
+	// 		className={clsx(
+	// 			flex h-full w-full min-w-[3rem] items-center justify-center px-1 pt-1 text-center text-sm font-medium border-b-2,
+	// 			isActive ? activeClassName : className
+	// 			)}
+	// 	>
+	// 		{children}
+	// 	</Link>
+	// );
 	return isActive ? (
 		<Link href={href} className={`${className} ${isActive && activeClassName}`} aria-current>
 			{children}
