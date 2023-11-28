@@ -3,6 +3,8 @@ import {
 	GetProductsListDocument,
 	GetSuggestedProductsListDocument,
 	ProductGetByIdDocument,
+	ProductGetColorVariantListDocument,
+	ProductGetSizeVariantListDocument,
 	type ProductListItemFragmentFragment,
 } from "@/gql/graphql";
 
@@ -26,6 +28,13 @@ export const getSuggestedProducts = async ({ slug }: { slug: string }) => {
 	});
 
 	return products;
+};
+
+export const getColorList = async () => {
+	return executeGraphQLQuery(ProductGetColorVariantListDocument, {});
+};
+export const getSizeList = async () => {
+	return executeGraphQLQuery(ProductGetSizeVariantListDocument, {});
 };
 
 // export const getProductsListByCategorySlug = async (

@@ -1,0 +1,5 @@
+query ProductGetSizeVariantList {
+    productSizeColorVariants{
+        name
+    }
+}

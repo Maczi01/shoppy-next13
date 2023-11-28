@@ -2,7 +2,12 @@ import React, { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { SuggestedProductsList } from "@/ui/organisms/SuggestedProductsList";
 import { SingleProduct } from "@/ui/organisms/SingleProduct";
-import { getProductById, getSuggestedProducts } from "@/api/getProductsList";
+import {
+	getColorList,
+	getProductById,
+	getSizeList,
+	getSuggestedProducts,
+} from "@/api/getProductsList";
 
 // export async function generateMetadata({
 // 	params,
@@ -33,14 +38,16 @@ export default async function SingleProductPage({ params }: { params: { productI
 	if (!product) {
 		notFound();
 	}
-	const slug = product?.categories[0]?.slug;
+	const slug = product?.categories[0]?.slug ?? "";
 	const suggestedProducts = await getSuggestedProducts({ slug });
+	const { productColorVariants } = await getColorList();
+	const { productSizeColorVariants } = await getSizeList();
 	return (
 		<div
 			className="flex min-h-screen
 		 flex-col items-center justify-center bg-black text-amber-200"
 		>
-			<SingleProduct {...product} />
+			<SingleProduct colors={productColorVariants} sizes={productSizeColorVariants} {...product} />
 			<aside>
 				<Suspense>
 					<SuggestedProductsList products={suggestedProducts} />

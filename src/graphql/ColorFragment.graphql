@@ -1,0 +1,6 @@
+fragment SingleProductSizeColorVariant on ProductSizeColorVariant {
+    id
+    name
+    color
+    size
+}

@@ -1,0 +1,12 @@
+query CollectionsGetList {
+    collections {
+        id
+        name
+        slug
+        products{
+            images(first: 1) {
+                url
+            }
+        }
+    }
+}
